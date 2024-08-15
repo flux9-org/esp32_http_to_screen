@@ -44,5 +44,5 @@ The screen when started up will default to "Some Text" as that is called in `set
 curl "http://192.168.1.45:80/data?headerValue=Text%20sent%20over%20WiFi%20to%20the%20ESP32"
 ```
 
-![WifiSend](tft_st7789_wifisend.jpg)
+![WifiSend](images/tft_st7789_wifisend.jpg)
 
