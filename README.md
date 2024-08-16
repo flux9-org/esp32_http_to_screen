@@ -1,5 +1,5 @@
 # TFT ST7789 Wifi Text
-Example project using ST7789 TFT screen with an ESP32 MCU to change the text on the screen based on a HTTP request. Used for reference on basic TFT screen wiring and hosting a HTTP webserver on ESP32.
+Example project of connecting ESP32 to Wifi, starting a simple HTTP webserver, and receiving HTTP input to change the text on a ST7789 TFT LCD screen.
 
 ## Parts Used
 
