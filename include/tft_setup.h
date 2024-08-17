@@ -1,0 +1,11 @@
+#define LOAD_GLCD 1
+#define ST7789_DRIVER 1
+#define USER_SETUP_LOADED 1
+#define TFT_WIDTH 240
+#define TFT_HEIGHT 320
+#define TFT_RST 22
+#define TFT_CS 5
+#define TFT_DC 21
+#define TFT_MOSI 23
+#define TFT_SCLK 18
+#define TFT_RGB_ORDER TFT_BGR

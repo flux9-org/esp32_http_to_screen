@@ -31,10 +31,14 @@ An example image of how this wiring can look:
 ![Wiring](images/tft_st7789_wiring.jpg)
 
 ### Flashing
-Use Platformio to flash firmware to the ESP32. Modify `main.cpp` and `platformio.ini` for any firmware changes:
+Use Platformio to flash firmware to the ESP32.
+
+Modify `main.cpp` and `platformio.ini` for any firmware changes. Use environment variables to pass WiFi details:
 
 ```
-cd tft_st7789_wifi_text && pio run -t upload
+export ESP_SSID="myssid"
+export ESP_WIFI_PASSWORD="mypassword"
+pio run -t upload
 ```
 
 ## Writing Text Over WiFi
