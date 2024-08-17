@@ -12,8 +12,6 @@ WebServer server(80);
 const char *ENDPOINT = "/data";
 
 IPAddress staticIP(192, 168, 1, 38);
-const char *SSID = "ESP_SSID";
-const char *WIFI_PASSWORD = "ESP_WIFI_PASSWORD";
 
 uint16_t BACKGROUND = tft.color565(60, 115, 180);
 
@@ -22,7 +20,7 @@ IPAddress secondaryDNS(0, 0, 0, 0);   // Secondary DNS (optional)
 
 void connectToWifi(const char *ssid, const char *password) {
   WiFi.mode(WIFI_STA);
-  WiFi.begin(SSID, WIFI_PASSWORD);
+  WiFi.begin(ssid, password);
   Serial.println("\nConnecting");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
@@ -75,7 +73,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("Setup start");
 
-  connectToWifi(SSID, WIFI_PASSWORD);
+  connectToWifi(ESP_SSID, ESP_WIFI_PASSWORD);
   // assignStaticIP(staticIP);
 
   server.on("/", handleRoot);
