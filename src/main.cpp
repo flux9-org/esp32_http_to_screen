@@ -3,42 +3,14 @@
 #include <WebServer.h>
 #include <WiFi.h>
 
-#include "WiFiType.h"
-#include "tft_setup.h"
-// #include "wifi_setup.h"
+#include "wifi_setup.h"
 
 TFT_eSPI tft = TFT_eSPI();
 WebServer server(80);
+IPAddress staticIP(192, 168, 1, 45);
 const char *ENDPOINT = "/data";
 
-IPAddress staticIP(192, 168, 1, 38);
-
 uint16_t BACKGROUND = tft.color565(60, 115, 180);
-
-IPAddress primaryDNS(192, 168, 1, 1); // Primary DNS (optional)
-IPAddress secondaryDNS(0, 0, 0, 0);   // Secondary DNS (optional)
-
-void connectToWifi(const char *ssid, const char *password) {
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-  Serial.println("\nConnecting");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(200);
-  }
-  delay(5000);
-  Serial.print("Connected to WiFi. Local ESP32 IP: ");
-  Serial.println(WiFi.localIP());
-}
-
-void assignStaticIP(IPAddress ipAddr) {
-  if (WiFi.config(ipAddr, WiFi.gatewayIP(), WiFi.subnetMask(), primaryDNS,
-                  secondaryDNS)) {
-    Serial.println("Static IP successfully configured");
-  } else {
-    Serial.println("Static IP configuration failed");
-  }
-}
 
 void header(const char *string) {
   tft.setTextSize(3);
@@ -74,7 +46,7 @@ void setup() {
   Serial.println("Setup start");
 
   connectToWifi(ESP_SSID, ESP_WIFI_PASSWORD);
-  // assignStaticIP(staticIP);
+  assignStaticIP(staticIP);
 
   server.on("/", handleRoot);
   server.on(ENDPOINT, handleData);
